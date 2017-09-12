@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\Controller\Account\Confirmation">
+        <plugin name="dunagan_magento_fixes_customer_controller_account_confirmation" type="\Dunagan\MagentoFixes\Plugin\Customer\Controller\Account\ConfirmationPlugin" sortOrder="1" disabled="false"/>
+    </type>
+
+    <preference for="\Dunagan\MagentoFixes\Helper\Customer\AddressFormatPopulaterInterface" type="\Dunagan\MagentoFixes\Helper\Customer\AddressFormatPopulater" />
+</config>

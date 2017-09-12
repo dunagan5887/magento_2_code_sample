@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_address_format">
+        <observer name="dunagan_magentofix_detect_virtual_order" instance="\Dunagan\MagentoFixes\Observer\Customer\AddressFormatObserver" shared="true" />
+    </event>
+</config>

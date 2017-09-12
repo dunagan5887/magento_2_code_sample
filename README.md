@@ -1,0 +1,7 @@
+# Sean Dunagan's Magento 2 Code Sample
+
+This repository is a small code sample to detail some of Sean Dunagan's work with the Magento 2 framework. The Dunagan_WebApi module was created to provide wrappers around the basic Magento cURL and SOAP request clients. It provides exception handling and logging for requests as well as a debug mode to document calls/responses and their execution time. The entire Dunagan_WebApi module was not committed here for the sake of brevity; only the SOAP and cURL adapters and their abstract parent class.
+
+This repository also contains module Dunagan_MagentoFixes; this module exists to address some of the issues Sean has found with the Magento framework which Magento has not provided patches for to this point (to my knowledge anyway).
+
+The issue of most consequence is an issue with the cron scheduler. If a cron job is desired to be scheduled every minute, the Magento framework will fail to schedule it properly. This is due to line 457 in method Magento\Cron\Observer\ProcessCronQueueObserver::saveSchedule(). Line 457 will return out of the method despite the fact that other cronjob schedules need to be saved to the cron_schedule table. Since the cron is set to schedule jobs every 15 minutes by default, this would mean that the highest frequency at which cron jobs can be run is only every 15 minutes. The crontab/events.xml file in this module rewrites the cron scheduler observer to be class Dunagan\MagentoFixes\Model\Cron\Observer\ProcessCronQueueObserver which provides a fix for this issue.
